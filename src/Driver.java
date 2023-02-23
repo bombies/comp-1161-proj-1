@@ -109,8 +109,8 @@ public class Driver {
         buses[3] = new SportBus("SPT_BIG", 3000, 2, mny, 1000, 2000, "Football,Hockey,Volleyball,Swimming,TKD");
         buses[4] = new TrainingBus("TRN_SML", 200, 20, 2, mny, 200, 500, "Math, Computing");
         buses[5] = new TrainingBus("TRN_BIG", 5000, 50, 2, mny, 2500, 4000, "Math, Computing, Physics,Chemistry");
-        buses[6] = new PartyBus("PRT_SML", 1000, 3, mny, 500, 500, "Badminton,Tennis", 50, 80, 5);
-        buses[7] = new PartyBus("PRT_BIG", 5000, 3, mny, 1500, 1000, "Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
+        buses[6] = new PartyBus("PRT_SML" , 5000, 3, 20, mny, 500, 500, "Badminton,Tennis", 50,80, 5);
+        buses[7] = new PartyBus("PRT_BIG" , 10000, 3, 50, mny, 1500, 1000, "Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
         return buses;
     }
 
