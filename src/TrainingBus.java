@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TrainBus extends Bus {
+public class TrainingBus extends Bus {
     private final int teacherArea, studentArea, wifiRange;
     private final ArrayList<String> courseList;
 
-    public TrainBus(String name, int basePrice, int wifiRange, int lev, Ministry mny, int teacherArea, int studentArea, String courseList) {
+    public TrainingBus(String name, int basePrice, int wifiRange, int lev, Ministry mny, int teacherArea, int studentArea, String courseList) {
         super(name, teacherArea + studentArea, basePrice, lev, mny);
         this.tripTypes += ",TRAINING";
         this.teacherArea = teacherArea;
         this.studentArea = studentArea;
         this.wifiRange = wifiRange;
-        this.courseList = new ArrayList<>(Arrays.stream(courseList.split(" ")).toList());
+        this.courseList = new ArrayList<>(Arrays.stream(courseList.split(",")).toList());
     }
 
     public double getTeacherArea() {

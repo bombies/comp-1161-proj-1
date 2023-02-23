@@ -108,28 +108,15 @@ public class Driver {
         Bus[] buses = new Bus[8];
         buses[0] = new Bus("BUS_SML", 300, 100, 1, mny);
         buses[1] = new Bus("BUS_BIG", 1000, 850, 1, mny);
-        /*
-         * UNCOMMENT BLOCK BELOW AFTER CREATING SPORTBUS, TRAININGBUS, AND PARTYBUS
-         * 
-         * buses[2] = new SportBus("SPT_SML",800,60, 2,mny, 100,200,"Football,Hockey");
-         * buses[3] = new SportBus("SPT_BIG",3000,400,
-         * 2,mny,1000,2000,"Football,Hockey,Volleyball,Swimming,TKD");
-         * buses[4] = new TrainingBus("TRN_SML",200, 200,20,2,mny, 200,500,
-         * "Math, Computing");
-         * buses[5] = new TrainingBus("TRN_BIG",5000,200,50,2,mny, 2500, 4000,
-         * "Math, Computing, Physics,Chemistry");
-         * //////////UNCOMMENT BELOW ONLY IF YOUR PartyBus is a SportBus
-         * //buses[6] = new PartyBus("PRT_SML" , 1000, 1500, 3, mny, 500, 500,
-         * "Badminton,Tennis", 50,80, 5);
-         * //buses[7] = new PartyBus("PRT_BIG" , 5000, 6500, 3, mny, 1500, 1000,
-         * "Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
-         * 
-         * //////////UNCOMMENT BELOW ONLY IF YOUR PartyBus is a TrainingBus
-         * buses[6] = new PartyBus("PRT_SML" , 5000, 1600, 3, 20, mny, 500, 500,
-         * "Badminton,Tennis", 50,80, 5);
-         * buses[7] = new PartyBus("PRT_BIG" , 10000, 1500, 3, 50, mny, 1500, 1000,
-         * "Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
-         */
+        
+        buses[2] = new SportBus("SPT_SML",800,60, mny, 100,200,"Football,Hockey");
+        buses[3] = new SportBus("SPT_BIG",3000,400, mny,1000,2000,"Football,Hockey,Volleyball,Swimming,TKD");
+        buses[4] = new TrainingBus("TRN_SML",200, 200,20,mny, 200,500,"Math, Computing");
+        buses[5] = new TrainingBus("TRN_BIG",5000,200,50,mny, 2500, 4000,"Math, Computing, Physics,Chemistry");
+
+        buses[6] = new PartyBus("PRT_SML" , 1000, 1500, mny, 500, 500,"Badminton,Tennis", 50,80, 5);
+        buses[7] = new PartyBus("PRT_BIG" , 5000, 6500, mny, 1500, 1000,"Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
+    
         return buses;
 
     }
