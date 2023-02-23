@@ -1,15 +1,15 @@
 import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
 
 public class SportBus extends Bus {
-    private final List<String> sportList;
+    private final ArrayList<String> sportList;
     private double competitorArea;
     private double spectatorArea;
     
     public SportBus(String name, int basePrice, int lev, Ministry mny, int competitorArea, int spectatorArea, String sportList) {
         super(name, competitorArea + spectatorArea, basePrice, lev, mny);
         this.tripTypes += ",SPORT";
-        this.sportList = Arrays.stream(sportList.split(" ")).toList();
+        this.sportList = new ArrayList<>(Arrays.stream(sportList.split(" ")).toList());
         this.competitorArea = competitorArea;
         this.spectatorArea = spectatorArea;
     }
