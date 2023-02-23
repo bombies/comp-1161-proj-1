@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Planner {
 
@@ -31,12 +32,21 @@ public class Planner {
          * //populate possible buses by adding busses that are suitable,
          * // can hold the passengers at the comfortlevel,and can be afforded
          */
+
+        possibleBuses.addAll(Arrays.stream(buses)
+            .filter(bus -> bus.canHold(numPassengers, comfortLevel) && bus.isSuitable(tripType) && bus.getBasePrice() <= this.budget)
+            .toList()
+        );
+
         // System.out.println(possibleBuses.size() +" affordable buses ");
         if (possibleBuses.size() > 0) {
-            Bus minBus = null;
             /*
              * //find the suitable bus with minimum price and assign to minbus`
              */
+            Bus minBus = possibleBuses.stream()
+                .reduce((cur, next) -> cur.getBasePrice() < next.getBasePrice() ?  (cur.available(date) ? cur : next) : (next.available(date) ? next : cur))
+                .orElse(null);
+            
             if (minBus == null)
                 System.out.println("No suitable bus is available");
             else {
