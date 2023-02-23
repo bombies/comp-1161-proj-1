@@ -26,6 +26,6 @@ public class SportBus extends Bus {
     }
 
     public int getEstimate(String type, int numPersons, int level) {
-        return (int)Math.floor(this.getBasePrice() * 10 * (competitorArea + spectatorArea) / competitorArea);
+        return this.getBasePrice() * 10 * (competitorArea + spectatorArea) / competitorArea;
     }
 }

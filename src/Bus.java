@@ -68,9 +68,8 @@ public class Bus {
     }
 
     public boolean canHold(int numPassengers, int comfortLevel) {
-        int capacity = (int) (size / mny.getSeparation(comfortLevel));
+        int capacity = (int)(size / mny.getSeparation(comfortLevel));
         return numPassengers <= capacity;
-
     }
 
     public void promoteTrips() {
@@ -88,8 +87,7 @@ public class Bus {
         int result = mny.checkApproval(ar);
         if (result >= 0) {
             int est = getEstimate(trip.getType(), trip.getNumPeople(), trip.getComfortLevel());
-            if (trip.getPlanner().getBudget() >= getEstimate(trip.getType(), trip.getNumPeople(),
-                    trip.getComfortLevel())) {
+            if (trip.getPlanner().getBudget() >= est) {
                 approvedTrips.add(trip);
                 trip.setBus(this);
                 retval = result;

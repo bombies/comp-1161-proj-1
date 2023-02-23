@@ -34,17 +34,22 @@ public class Planner {
          */
 
         possibleBuses.addAll(Arrays.stream(buses)
-            .filter(bus -> bus.canHold(numPassengers, comfortLevel) && bus.isSuitable(tripType) && bus.getBasePrice() <= this.budget)
+            .filter(bus -> 
+                bus.getEstimate(tripType, numPassengers, comfortLevel) <= this.budget 
+                && bus.isSuitable(tripType) 
+                && bus.available(date) 
+                && bus.canHold(numPassengers, comfortLevel)
+            )
             .toList()
         );
 
-        // System.out.println(possibleBuses.size() +" affordable buses ");
+        // System.out.println(possibleBuses.size() +" affordable buses: " + possibleBuses.toString());
         if (possibleBuses.size() > 0) {
             /*
              * //find the suitable bus with minimum price and assign to minbus`
              */
             Bus minBus = possibleBuses.stream()
-                .reduce((cur, next) -> cur.getBasePrice() < next.getBasePrice() ?  (cur.available(date) ? cur : next) : (next.available(date) ? next : cur))
+                .reduce((cur, next) -> cur.getEstimate(tripType, numPassengers, comfortLevel) < next.getEstimate(tripType, numPassengers, comfortLevel) ?  cur : next)
                 .orElse(null);
             
             if (minBus == null)
@@ -61,15 +66,12 @@ public class Planner {
                     retval = reserved;
                     System.out.println(name + " successfully reserved " + trip);
                 }
-
             }
-        } else
-            System.out.println(name + " cannot afford to pay for any suitable buses");
+        } else System.out.println(name + " cannot afford to pay for any suitable buses");
         return retval;
     }
 
     public void payFor(Bus bus, String tripType, int numPassengers, int comfortLevel) {
         budget -= bus.getEstimate(tripType, numPassengers, comfortLevel);
     }
-
 }
