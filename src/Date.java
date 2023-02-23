@@ -1,19 +1,19 @@
 
-public class Date
-{
+public class Date {
     private int day;
-    public void setDay(int day){
+
+    public void setDay(int day) {
     }
-    public int getDay(){
+
+    public int getDay() {
         return 0;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return "";
     }
-    
-    public Date(int date)
-    {
+
+    public Date(int date) {
     }
 
 }
