@@ -12,7 +12,7 @@ public class PartyBus extends TrainingBus {
 
     @Override
     public int getEstimate(String type, int numPersons, int level) {
-        return (level + 1) * barArea * super.getEstimate(type, numPersons, level) / foodArea;
+        return foodArea * super.getEstimate(type, numPersons, level) / (3 * barArea);
     }
     
 }
