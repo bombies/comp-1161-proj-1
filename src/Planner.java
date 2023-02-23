@@ -70,7 +70,6 @@ public class Planner {
 
     public void payFor(Bus bus, String tripType, int numPassengers, int comfortLevel) {
         budget -= bus.getEstimate(tripType, numPassengers, comfortLevel);
-
     }
 
 }
