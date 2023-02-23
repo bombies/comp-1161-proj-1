@@ -37,8 +37,6 @@ public class Planner {
             .filter(bus -> 
                 bus.getEstimate(tripType, numPassengers, comfortLevel) <= this.budget 
                 && bus.isSuitable(tripType) 
-                && bus.available(date) 
-                && bus.canHold(numPassengers, comfortLevel)
             )
             .toList()
         );
@@ -49,6 +47,7 @@ public class Planner {
              * //find the suitable bus with minimum price and assign to minbus`
              */
             Bus minBus = possibleBuses.stream()
+                .filter(bus -> bus.available(date) && bus.canHold(numPassengers, comfortLevel))    
                 .reduce((cur, next) -> cur.getEstimate(tripType, numPassengers, comfortLevel) < next.getEstimate(tripType, numPassengers, comfortLevel) ?  cur : next)
                 .orElse(null);
             
