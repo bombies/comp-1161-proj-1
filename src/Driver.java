@@ -1,13 +1,12 @@
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
 
 public class Driver {
 
-    public static void main(String[] args) {
-        String nameId;
-
-        Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        PrintStream outFile = new PrintStream(new File("Project1.Output.txt"));
+        System.setOut(outFile);
         ArrayList<Planner> planners = new ArrayList<Planner>();
         Ministry mny = new Ministry("TRANSPORT");
         Bus[] buses = populateBuses(mny);
@@ -23,10 +22,6 @@ public class Driver {
         planners.add(p5);
 
         int testDays = 3;
-
-        System.out.println("Please enter your surname then ID number, separated by a space");
-        nameId = scan.nextLine();
-        scan.close();
 
         for (int i = 0; i < testDays; i++) {
             for (Planner pl : planners) {
@@ -86,7 +81,7 @@ public class Driver {
                 System.out.println("======================================");
                 System.out.println(
                         pl.getName() + "[budget:$" + pl.getBudget() + "] planning a party trip with 500 people");
-                if ((approvalId = pl.planTrip(500, "PARTY", new Date(i + 3), 3)) >= 0)
+                if ((approvalId = pl.planTrip(200, "PARTY", new Date(i + 3), 3)) >= 0)
                     System.out.println(
                             "Approval Certificate #" + approvalId + " granted to " + pl.getName() + " for trip");
                 else
@@ -94,11 +89,12 @@ public class Driver {
                 System.out.println("--------------------------------------");
 
             }
+
         }
         // mny.showEvents();
         for (Bus b : buses)
-            if (!(b == null))
-                b.promoteTrips();
+            b.promoteTrips();
+
     }
 
     public static Bus[] populateBuses(Ministry mny) {
@@ -110,8 +106,10 @@ public class Driver {
         buses[4] = new TrainingBus("TRN_SML", 200, 20, 2, mny, 200, 500, "Math, Computing");
         buses[5] = new TrainingBus("TRN_BIG", 5000, 50, 2, mny, 2500, 4000, "Math, Computing, Physics,Chemistry");
         buses[6] = new PartyBus("PRT_SML", 1000, 3, mny, 500, 500, "Badminton,Tennis", 50, 80, 5);
-        buses[7] = new PartyBus("PRT_BIG", 5000, 3, mny, 1500, 1000, "Swimming, Gymnastics,Badminton,Tennis", 100,200, 10);
+        buses[7] = new PartyBus("PRT_BIG", 5000, 3, mny, 1500, 1000, "Swimming, Gymnastics,Badminton,Tennis", 100, 200,
+                10);
         return buses;
+
     }
 
 }
