@@ -3,8 +3,7 @@ import java.util.ArrayList;
 
 public class SportBus extends Bus {
     private final ArrayList<String> sportList;
-    private double competitorArea;
-    private double spectatorArea;
+    private int competitorArea, spectatorArea;
     
     public SportBus(String name, int basePrice, int lev, Ministry mny, int competitorArea, int spectatorArea, String sportList) {
         super(name, competitorArea + spectatorArea, basePrice, lev, mny);
