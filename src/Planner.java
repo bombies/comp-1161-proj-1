@@ -55,11 +55,11 @@ public class Planner {
                 System.out.println("No suitable bus is available");
             else {
                 // create a trp with the type, number of passengers and the comfortlevel
-                // attempt to get get an approval id by calling the reserve method of the bus
+                // attempt to get an approval id by calling the reserve method of the bus
                 // if the id >=0
                 Trip trip = new Trip(tripType, numPassengers, date, comfortLevel, this);
                 int reserved = minBus.reserve(trip, mny);
-                if (reserved >= 0) {
+                if (minBus.getId() >= 0 &&  reserved >= 0) {
                     trip.setBus(minBus);
                     payFor(minBus, tripType, numPassengers, comfortLevel);
                     retval = reserved;

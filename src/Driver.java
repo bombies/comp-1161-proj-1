@@ -5,7 +5,7 @@ import java.io.*;
 public class Driver {
 
     public static void main(String[] args) throws IOException {
-        PrintStream outFile = new PrintStream(new File("Project1.Output.txt"));
+        PrintStream outFile = new PrintStream("Project1.Output.txt");
         System.setOut(outFile);
         ArrayList<Planner> planners = new ArrayList<Planner>();
         Ministry mny = new Ministry("TRANSPORT");
